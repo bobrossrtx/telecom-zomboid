@@ -3,6 +3,7 @@
 
 require "Telecom/TelecomDevice"
 require "Telecom/NetworkState"
+require "Telecom/TelecomUtils"
 
 Computer = {}
 Computer.__index = Computer
@@ -35,7 +36,7 @@ function Computer:togglePower()
     self.isOn = not self.isOn
     
     if self.isOn then
-        self.bootTime = getTimestamp()
+        self.bootTime = TelecomUtils.getTime()
         return true, "Computer booting up..."
     else
         self.currentApp = nil
@@ -47,7 +48,7 @@ end
 function Computer:isBooted()
     if not self.isOn then return false end
     
-    local elapsed = getTimestamp() - self.bootTime
+    local elapsed = TelecomUtils.getTime() - self.bootTime
     return elapsed > 3 -- Boot takes 3 seconds
 end
 

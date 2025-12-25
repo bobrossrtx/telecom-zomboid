@@ -3,6 +3,8 @@
 
 if isClient() then return end -- Server-side only
 
+require "Telecom/TelecomUtils"
+
 NetworkState = NetworkState or {}
 
 -- Initialize network state
@@ -32,7 +34,7 @@ function NetworkState.registerNode(x, y, z, nodeType, playerId)
         active = false,
         owner = playerId,
         connectedNodes = {},
-        lastUpdate = getTimestamp()
+        lastUpdate = TelecomUtils.getTime()
     }
     
     return nodeId
@@ -57,7 +59,7 @@ end
 function NetworkState.activateNode(nodeId)
     if NetworkState.nodes[nodeId] then
         NetworkState.nodes[nodeId].active = true
-        NetworkState.nodes[nodeId].lastUpdate = getTimestamp()
+        NetworkState.nodes[nodeId].lastUpdate = TelecomUtils.getTime()
         NetworkState.updateNetworkState()
         return true
     end
@@ -68,7 +70,7 @@ end
 function NetworkState.deactivateNode(nodeId)
     if NetworkState.nodes[nodeId] then
         NetworkState.nodes[nodeId].active = false
-        NetworkState.nodes[nodeId].lastUpdate = getTimestamp()
+        NetworkState.nodes[nodeId].lastUpdate = TelecomUtils.getTime()
         NetworkState.updateNetworkState()
         return true
     end

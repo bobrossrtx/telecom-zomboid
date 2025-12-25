@@ -3,6 +3,7 @@
 
 require "Telecom/TelecomDevice"
 require "Telecom/NetworkState"
+require "Telecom/TelecomUtils"
 
 Phone = {}
 Phone.__index = Phone
@@ -19,7 +20,7 @@ function Phone:new(x, y, z, player)
     phone.contacts = {}
     phone.messages = {}
     phone.callHistory = {}
-    phone.lastBatteryDrain = getTimestamp()
+    phone.lastBatteryDrain = TelecomUtils.getTime()
     
     return phone
 end
@@ -52,7 +53,7 @@ function Phone:makeCall(phoneNumber)
     -- Add to call history
     table.insert(self.callHistory, {
         number = phoneNumber,
-        timestamp = getTimestamp(),
+        timestamp = TelecomUtils.getTime(),
         outgoing = true
     })
     
@@ -65,7 +66,7 @@ function Phone:makeCall(phoneNumber)
         "This is an automated message. The evacuation point is compromised."
     }
     
-    local response = responses[ZombRand(1, #responses)]
+    local response = responses[ZombRand(#responses) + 1]
     return true, response
 end
 
@@ -90,7 +91,7 @@ function Phone:sendText(phoneNumber, message)
     table.insert(self.messages, {
         number = phoneNumber,
         text = message,
-        timestamp = getTimestamp(),
+        timestamp = TelecomUtils.getTime(),
         outgoing = true,
         read = true
     })
@@ -105,7 +106,7 @@ function Phone:receiveText(fromNumber, message)
     table.insert(self.messages, {
         number = fromNumber,
         text = message,
-        timestamp = getTimestamp(),
+        timestamp = TelecomUtils.getTime(),
         outgoing = false,
         read = false
     })
@@ -135,7 +136,7 @@ end
 function Phone:update()
     TelecomDevice.update(self)
     
-    local currentTime = getTimestamp()
+    local currentTime = TelecomUtils.getTime()
     
     -- Drain battery slowly when on (every 60 seconds)
     if self.isOn and (currentTime - self.lastBatteryDrain) >= 60 then

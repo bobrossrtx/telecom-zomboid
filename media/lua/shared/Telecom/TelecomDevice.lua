@@ -2,6 +2,7 @@
 -- Base class for all telecommunication devices
 
 require "Telecom/NetworkState"
+require "Telecom/TelecomUtils"
 
 TelecomDevice = {}
 TelecomDevice.__index = TelecomDevice
@@ -45,7 +46,7 @@ end
 
 -- Update device state
 function TelecomDevice:update()
-    local currentTime = getTimestamp()
+    local currentTime = TelecomUtils.getTime()
     
     -- Only check power every few seconds
     if currentTime - self.lastCheck < 5 then
