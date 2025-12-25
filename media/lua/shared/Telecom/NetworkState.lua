@@ -1,8 +1,6 @@
 -- NetworkState.lua
 -- Manages the global state of the telecommunications network
 
-if isClient() then return end -- Server-side only
-
 require "Telecom/TelecomUtils"
 
 NetworkState = NetworkState or {}
@@ -24,6 +22,9 @@ NetworkState.NodeType = {
 
 -- Register a network node at a location
 function NetworkState.registerNode(x, y, z, nodeType, playerId)
+    -- Only register on server or single-player
+    if isClient() and not isServer() then return nil end
+    
     local nodeId = x .. "_" .. y .. "_" .. z
     
     NetworkState.nodes[nodeId] = {
@@ -42,6 +43,9 @@ end
 
 -- Remove a network node
 function NetworkState.unregisterNode(nodeId)
+    -- Only unregister on server or single-player
+    if isClient() and not isServer() then return end
+    
     if NetworkState.nodes[nodeId] then
         -- Disconnect from all connected nodes
         for connectedId, _ in pairs(NetworkState.nodes[nodeId].connectedNodes) do
@@ -57,6 +61,9 @@ end
 
 -- Activate a node (when powered)
 function NetworkState.activateNode(nodeId)
+    -- Only activate on server or single-player
+    if isClient() and not isServer() then return false end
+    
     if NetworkState.nodes[nodeId] then
         NetworkState.nodes[nodeId].active = true
         NetworkState.nodes[nodeId].lastUpdate = TelecomUtils.getTime()
@@ -68,6 +75,9 @@ end
 
 -- Deactivate a node (power loss)
 function NetworkState.deactivateNode(nodeId)
+    -- Only deactivate on server or single-player
+    if isClient() and not isServer() then return false end
+    
     if NetworkState.nodes[nodeId] then
         NetworkState.nodes[nodeId].active = false
         NetworkState.nodes[nodeId].lastUpdate = TelecomUtils.getTime()
@@ -99,6 +109,9 @@ end
 
 -- Connect two nodes
 function NetworkState.connectNodes(nodeId1, nodeId2)
+    -- Only connect on server or single-player
+    if isClient() and not isServer() then return false end
+    
     if NetworkState.nodes[nodeId1] and NetworkState.nodes[nodeId2] then
         NetworkState.nodes[nodeId1].connectedNodes[nodeId2] = true
         NetworkState.nodes[nodeId2].connectedNodes[nodeId1] = true
@@ -110,6 +123,9 @@ end
 
 -- Update global network state
 function NetworkState.updateNetworkState()
+    -- Only update on server or single-player
+    if isClient() and not isServer() then return end
+    
     local activeNodes = 0
     local activeRouters = 0
     
@@ -150,11 +166,17 @@ end
 
 -- Save network state (for persistence)
 function NetworkState.save()
+    -- Only save on server or single-player
+    if isClient() and not isServer() then return end
+    
     ModData.add("TelecomNetwork", NetworkState)
 end
 
 -- Load network state (on server start)
 function NetworkState.load()
+    -- Only load on server or single-player
+    if isClient() and not isServer() then return end
+    
     local data = ModData.get("TelecomNetwork")
     if data then
         NetworkState.nodes = data.nodes or {}

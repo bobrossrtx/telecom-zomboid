@@ -6,7 +6,7 @@ module Base
         keep Screwdriver,
         ElectronicsScrap=2,
         ElectronicsMag5,
-        Computer/Laptop,
+        Computer,
         
         Result: Computer,
         Time: 150.0,
@@ -14,11 +14,36 @@ module Base
         CanBeDoneFromFloor: true,
     }
 
-    recipe Repair Phone
+    recipe Repair Laptop
+    {
+        keep Screwdriver,
+        ElectronicsScrap=2,
+        ElectronicsMag5,
+        Laptop,
+        
+        Result: Laptop,
+        Time: 150.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    recipe Repair Cell Phone
     {
         keep Screwdriver,
         ElectronicsScrap,
-        CellPhone/Smartphone,
+        CellPhone,
+        
+        Result: CellPhone,
+        Time: 60.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    recipe Repair Smartphone
+    {
+        keep Screwdriver,
+        ElectronicsScrap,
+        Smartphone,
         
         Result: Smartphone,
         Time: 60.0,
@@ -88,10 +113,33 @@ module Base
         CanBeDoneFromFloor: true,
     }
 
-    recipe Dismantle Phone
+    recipe Dismantle Laptop
+    {
+        destroy Hammer,
+        keep Screwdriver,
+        Laptop,
+        
+        Result: ElectronicsScrap=3,
+        Time: 80.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    recipe Dismantle Cell Phone
     {
         keep Screwdriver,
-        CellPhone/Smartphone,
+        CellPhone,
+        
+        Result: ElectronicsScrap=1,
+        Time: 40.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    recipe Dismantle Smartphone
+    {
+        keep Screwdriver,
+        Smartphone,
         
         Result: ElectronicsScrap=1,
         Time: 40.0,

@@ -27,9 +27,9 @@ end
 
 -- Generate random phone number
 function Phone.generatePhoneNumber()
-    local area = ZombRand(200, 999)
-    local prefix = ZombRand(200, 999)
-    local line = ZombRand(1000, 9999)
+    local area = ZombRand(800) + 200  -- 200-999
+    local prefix = ZombRand(800) + 200  -- 200-999
+    local line = ZombRand(9000) + 1000  -- 1000-9999
     return string.format("%03d-%03d-%04d", area, prefix, line)
 end
 
@@ -66,6 +66,7 @@ function Phone:makeCall(phoneNumber)
         "This is an automated message. The evacuation point is compromised."
     }
     
+    -- ZombRand(n) returns 0 to n-1, so add 1 for Lua's 1-based indexing
     local response = responses[ZombRand(#responses) + 1]
     return true, response
 end
