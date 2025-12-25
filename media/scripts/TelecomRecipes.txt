@@ -1,0 +1,161 @@
+module Base
+{
+    /* Repair Recipes */
+    recipe Repair Computer
+    {
+        keep Screwdriver,
+        ElectronicsScrap=2,
+        ElectronicsMag5,
+        Computer,
+        
+        Result: Computer,
+        Time: 150.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    recipe Repair Laptop
+    {
+        keep Screwdriver,
+        ElectronicsScrap=2,
+        ElectronicsMag5,
+        Laptop,
+        
+        Result: Laptop,
+        Time: 150.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    recipe Repair Cell Phone
+    {
+        keep Screwdriver,
+        ElectronicsScrap,
+        CellPhone,
+        
+        Result: CellPhone,
+        Time: 60.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    recipe Repair Smartphone
+    {
+        keep Screwdriver,
+        ElectronicsScrap,
+        Smartphone,
+        
+        Result: Smartphone,
+        Time: 60.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    recipe Repair Router
+    {
+        keep Screwdriver,
+        ElectronicsScrap,
+        WifiRouter,
+        
+        Result: WifiRouter,
+        Time: 80.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    /* Assembly Recipes */
+    recipe Make Network Cable
+    {
+        Wire=2,
+        ElectronicsScrap,
+        
+        Result: EthernetCable=2,
+        Time: 40.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    recipe Assemble Network Switch
+    {
+        keep Screwdriver,
+        ElectronicsScrap=3,
+        Wire,
+        ElectronicsMag5,
+        
+        Result: NetworkSwitch,
+        Time: 200.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    recipe Upgrade Router
+    {
+        keep Screwdriver,
+        WifiRouter,
+        AntennaBooster,
+        
+        Result: WifiRouter,
+        Time: 100.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    /* Disassembly for Parts */
+    recipe Dismantle Computer
+    {
+        destroy Hammer,
+        keep Screwdriver,
+        Computer,
+        
+        Result: ElectronicsScrap=4,
+        Time: 100.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    recipe Dismantle Laptop
+    {
+        destroy Hammer,
+        keep Screwdriver,
+        Laptop,
+        
+        Result: ElectronicsScrap=3,
+        Time: 80.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    recipe Dismantle Cell Phone
+    {
+        keep Screwdriver,
+        CellPhone,
+        
+        Result: ElectronicsScrap=1,
+        Time: 40.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    recipe Dismantle Smartphone
+    {
+        keep Screwdriver,
+        Smartphone,
+        
+        Result: ElectronicsScrap=1,
+        Time: 40.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+
+    /* Power Solutions */
+    recipe Make Power Adapter
+    {
+        ElectronicsScrap,
+        Wire,
+        
+        Result: PowerAdapter,
+        Time: 60.0,
+        Category: Electrical,
+        CanBeDoneFromFloor: true,
+    }
+}
