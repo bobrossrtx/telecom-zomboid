@@ -1,0 +1,126 @@
+module Base
+{
+    /* Computers */
+    item Computer
+    {
+        Weight = 5.0,
+        Type = Normal,
+        DisplayName = Desktop Computer,
+        Icon = ElectronicsScrap,
+        WorldStaticModel = ComputerMonitor,
+        StaticModel = ComputerMonitor,
+        DisplayCategory = Electronics,
+    }
+
+    item Laptop
+    {
+        Weight = 2.5,
+        Type = Normal,
+        DisplayName = Laptop Computer,
+        Icon = ElectronicsScrap,
+        DisplayCategory = Electronics,
+    }
+
+    /* Phones */
+    item CellPhone
+    {
+        Weight = 0.2,
+        Type = Normal,
+        DisplayName = Cell Phone,
+        Icon = Phoneicon,
+        DisplayCategory = Electronics,
+    }
+
+    item Smartphone
+    {
+        Weight = 0.3,
+        Type = Normal,
+        DisplayName = Smartphone,
+        Icon = Phoneicon,
+        DisplayCategory = Electronics,
+    }
+
+    /* Network Infrastructure */
+    item WifiRouter
+    {
+        Weight = 0.5,
+        Type = Normal,
+        DisplayName = WiFi Router,
+        Icon = ElectronicsScrap,
+        DisplayCategory = Electronics,
+    }
+
+    item CableModem
+    {
+        Weight = 0.8,
+        Type = Normal,
+        DisplayName = Cable Modem,
+        Icon = ElectronicsScrap,
+        DisplayCategory = Electronics,
+    }
+
+    item NetworkSwitch
+    {
+        Weight = 1.0,
+        Type = Normal,
+        DisplayName = Network Switch,
+        Icon = ElectronicsScrap,
+        DisplayCategory = Electronics,
+    }
+
+    item ServerRack
+    {
+        Weight = 15.0,
+        Type = Normal,
+        DisplayName = Server Rack,
+        Icon = ElectronicsScrap,
+        DisplayCategory = Electronics,
+    }
+
+    /* Cables and Accessories */
+    item EthernetCable
+    {
+        Weight = 0.1,
+        Type = Normal,
+        DisplayName = Ethernet Cable,
+        Icon = Wire,
+        DisplayCategory = Electronics,
+    }
+
+    item PhoneCable
+    {
+        Weight = 0.1,
+        Type = Normal,
+        DisplayName = Phone Cable,
+        Icon = Wire,
+        DisplayCategory = Electronics,
+    }
+
+    item PowerAdapter
+    {
+        Weight = 0.3,
+        Type = Normal,
+        DisplayName = Power Adapter,
+        Icon = ElectronicsScrap,
+        DisplayCategory = Electronics,
+    }
+
+    /* Repair Items */
+    item NetworkCard
+    {
+        Weight = 0.2,
+        Type = Normal,
+        DisplayName = Network Card,
+        Icon = ElectronicsScrap,
+        DisplayCategory = Electronics,
+    }
+
+    item AntennaBooster
+    {
+        Weight = 0.5,
+        Type = Normal,
+        DisplayName = Signal Booster,
+        Icon = ElectronicsScrap,
+        DisplayCategory = Electronics,
+    }
+}

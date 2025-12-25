@@ -1,0 +1,15 @@
+name=Telecommunications Revival
+poster=poster.png
+id=TelecomZomboid
+description=Bring back the internet and telecommunications in Project Zomboid! This mod adds interactive devices like computers, phones, routers, and modems. Restore power to buildings, set up network infrastructure, and reconnect with the digital world in the apocalypse.
+description=
+description=Features:
+description=- Computers with internet browsing and communication
+description=- Phones for calls and text messages
+description=- Network infrastructure (routers, modems, servers)
+description=- Power-dependent systems
+description=- Progressive network restoration gameplay
+description=- Crafting and repair mechanics for devices
+url=https://github.com/bobrossrtx/telecom-zomboid
+modversion=1.0.0
+pzversion=41.78
