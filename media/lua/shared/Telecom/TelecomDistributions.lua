@@ -3,6 +3,7 @@
 
 require "Items/Distributions"
 require "Items/ProceduralDistributions"
+require "Vehicles/VehicleDistributions"
 
 -- Add to existing loot tables
 table.insert(ProceduralDistributions.list["ElectronicStoreComputers"].items, "Base.Computer")

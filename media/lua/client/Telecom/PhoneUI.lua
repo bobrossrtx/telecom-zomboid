@@ -2,6 +2,9 @@
 -- Phone interface UI
 
 require "ISUI/ISPanel"
+require "ISUI/ISLabel"
+require "ISUI/ISButton"
+require "ISUI/ISTextEntryBox"
 require "Telecom/Phone"
 
 PhoneUI = ISPanel:derive("PhoneUI")

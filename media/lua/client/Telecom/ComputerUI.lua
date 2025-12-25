@@ -2,6 +2,9 @@
 -- Computer interface UI
 
 require "ISUI/ISPanel"
+require "ISUI/ISLabel"
+require "ISUI/ISButton"
+require "ISUI/ISTextEntryBox"
 require "Telecom/Computer"
 
 ComputerUI = ISPanel:derive("ComputerUI")

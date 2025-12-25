@@ -2,6 +2,7 @@
 -- Computer device implementation with internet functionality
 
 require "Telecom/TelecomDevice"
+require "Telecom/NetworkState"
 
 Computer = {}
 Computer.__index = Computer

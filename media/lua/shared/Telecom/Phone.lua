@@ -2,6 +2,7 @@
 -- Phone device implementation with call and text functionality
 
 require "Telecom/TelecomDevice"
+require "Telecom/NetworkState"
 
 Phone = {}
 Phone.__index = Phone
@@ -18,6 +19,7 @@ function Phone:new(x, y, z, player)
     phone.contacts = {}
     phone.messages = {}
     phone.callHistory = {}
+    phone.lastBatteryDrain = getTimestamp()
     
     return phone
 end
@@ -63,7 +65,7 @@ function Phone:makeCall(phoneNumber)
         "This is an automated message. The evacuation point is compromised."
     }
     
-    local response = responses[ZombRand(1, #responses + 1)]
+    local response = responses[ZombRand(1, #responses)]
     return true, response
 end
 
@@ -133,9 +135,12 @@ end
 function Phone:update()
     TelecomDevice.update(self)
     
-    -- Drain battery slowly when on
-    if self.isOn and getTimestamp() % 60 == 0 then
+    local currentTime = getTimestamp()
+    
+    -- Drain battery slowly when on (every 60 seconds)
+    if self.isOn and (currentTime - self.lastBatteryDrain) >= 60 then
         self.battery = math.max(0, self.battery - 0.1)
+        self.lastBatteryDrain = currentTime
         
         -- Turn off if battery dead
         if self.battery <= 0 then
