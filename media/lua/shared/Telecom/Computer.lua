@@ -59,7 +59,7 @@ function Computer:launchApp(appName)
     end
     
     if not self:hasNetworkConnectivity() and appName ~= "Settings" and appName ~= "Terminal" then
-        return false, "No network connection required for " .. appName
+        return false, "Network connection required for " .. appName
     end
     
     for _, app in ipairs(self.installedApps) do

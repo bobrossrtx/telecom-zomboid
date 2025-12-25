@@ -66,7 +66,7 @@ function Phone:makeCall(phoneNumber)
         "This is an automated message. The evacuation point is compromised."
     }
     
-    -- ZombRand(n) returns 0 to n-1, so add 1 for Lua's 1-based indexing
+    -- ZombRand(n) returns 0 to n-1, so we add 1 for Lua's 1-based array indexing
     local response = responses[ZombRand(#responses) + 1]
     return true, response
 end
